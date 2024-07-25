@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -20,13 +20,13 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+
+  background: radial-gradient(98.26% 251.56% at 13.33% 18.61%, #343131 0%, #1D1919 100%);
+  box-shadow: 19.771px 28.5581px 204.3px rgba(0, 0, 0, 0.62);
 }
 
 h1 {
-  font-family: "Playwrite DE Grund", cursive !important;
+  font-family: "Caudex", serif;
 
 }
 

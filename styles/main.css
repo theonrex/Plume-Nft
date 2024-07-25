@@ -3,6 +3,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: stretch;
+    background-color: red;
 }
 
 .nftDataMap {
@@ -61,42 +62,4 @@
 
 .ContractExtenstion h2 {
     font-size: 1.4em;
-}
-
-/* Signin */
-.Signin {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.ConnectWalletButton {
-    width: 50%;
-}
-
-.ConnectWalletButton h1 {
-    font-size: 3em;
-    font-weight: bold;
-    background: #740ECF;
-    background: linear-gradient(to right, #740ECF 0%, #CF2B68 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-transform: capitalize;
-
-
-}
-
-.ConnectButton button {
-    margin-top: 1em;
-    width: 50%;
-}
-
-.ConnectWalletButton h3 {
-    font-size: 1.3em;
-}
-
-.Signin_Img {
-    width: 50%;
 }

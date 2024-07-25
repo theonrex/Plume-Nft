@@ -1,0 +1,117 @@
+.Signin {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.SignIn_Detials {
+    width: 50%;
+}
+
+.SignIn_Detials h1 {
+    font-size: 4em;
+    font-weight: bold;
+    color: white;
+    line-height: 1em;
+}
+
+.SignIn_Detials h1 span {
+    text-shadow:
+        -2px 3px 3px #ff0eef,
+        4px 3px 2px #4c00ff;
+}
+
+
+.ConnectButton button {
+    margin-top: 1em;
+    width: 50%;
+}
+
+.SignIn_Detials h3 {
+    font-size: 1.2em;
+    color: gray;
+    padding: 1em 0;
+    width: 90%;
+}
+
+.Signin_Img {
+    width: 50%;
+}
+
+@media screen and (max-width: 1211px) {
+    .SignIn_Detials h1 {
+        font-size: 3em;
+
+    }
+}
+
+@media screen and (max-width: 926px) {
+    .SignIn_Detials h1 {
+        font-size: 3em;
+
+    }
+
+    .Signin {
+        flex-direction: column
+    }
+
+    .Signin_Img {
+        margin-bottom: 2em;
+        width: 90%;
+    }
+
+    .SignIn_Detials {
+        width: 90%;
+        text-align: center;
+    }
+
+    .SignIn_Detials h3 {
+        font-size: 1.2em;
+        width: 100%;
+    }
+
+
+}
+
+
+@media screen and (max-width: 446px) {
+    .SignIn_Detials h1 {
+        font-size: 2.5em;
+
+    }
+
+    .SignIn_Detials h3 {
+        font-size: 1.1em;
+        width: 100%;
+    }
+
+
+}
+
+@media screen and (max-width: 348px) {
+    .SignIn_Detials h1 {
+        font-size: 2.1em;
+
+    }
+
+    .SignIn_Detials h3 {
+        font-size: 1em;
+    }
+
+
+}
+
+@media screen and (max-width: 297px) {
+    .SignIn_Detials h1 {
+        font-size: 1.7em;
+
+    }
+
+    .SignIn_Detials h3 {
+        font-size: 0.9em;
+    }
+
+
+}
