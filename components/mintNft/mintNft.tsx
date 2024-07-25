@@ -3,22 +3,18 @@ import { useSendTransaction, useActiveAccount } from "thirdweb/react";
 import { claimTo } from "thirdweb/extensions/erc721";
 import { contract } from "@/consts/parameters";
 import styles from "./mintNft.module.css";
-import ConnectWalletButton from "@/components/connectWalletBtn";
 import Image from "next/image";
 import YellowImage from "../../public/images/cisar yellow.png";
-import { FaEye } from "react-icons/fa";
 import {
   useNextTokenIdToMint,
   useNftName,
   useBalanceOf,
   getClaimConditionById,
   useTokenuri,
-  useOwnedNfts,
 } from "@/hooks";
 import { ethers } from "ethers";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Link from "next/link";
 import ColorThief from "colorthief";
 
 const convertIpfsToHttp = (ipfsUri: string | undefined) => {
@@ -43,7 +39,6 @@ export default function MintNft() {
     error,
   } = useSendTransaction();
 
-  // console.log("isError", error);
   const owner = activeAccount?.address || "";
 
   const { data: nftNmae, isLoading } = useNftName();
@@ -53,7 +48,35 @@ export default function MintNft() {
   const { data: Tokenuri } = useTokenuri({ NextTokenIdToMint: nextTokenId });
   const { data: BalanceOf } = useBalanceOf(owner);
 
-  // console.log("useOwnedNfts", ownedNFTs);
+  useEffect(() => {
+    const fetchNFTs = async () => {
+      if (!owner) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          `https://plume-testnet.explorer.caldera.xyz/api/v2/addresses/${owner}/nft/collections?type=ERC-721%2CERC-404%2CERC-1155`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch NFTs");
+        }
+        const ownedNFTs = await response.json();
+        const filteredNFTs = ownedNFTs.items.filter(
+          (nft: { token: { address: string } }) =>
+            nft.token.address === "0xa0EB5036bd9b0284c64175ac0264Be96a82ca90c"
+        );
+        setOwnedNFTs(filteredNFTs);
+      } catch (error) {
+        console.error("Error fetching NFTs:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNFTs();
+  }, [owner]);
 
   useEffect(() => {
     const fetchMetadata = async () => {
@@ -72,25 +95,6 @@ export default function MintNft() {
 
     fetchMetadata();
   }, [Tokenuri]);
-
-  useEffect(() => {
-    const fetchNFTs = async () => {
-      try {
-        const { ownedNFTs } = await useOwnedNfts(owner);
-        const filteredNFTs = ownedNFTs.items.filter(
-          (nft: { token: { address: string } }) =>
-            nft.token.address === "0xa0EB5036bd9b0284c64175ac0264Be96a82ca90c"
-        );
-        setOwnedNFTs(filteredNFTs);
-      } catch (error) {
-        console.error("Error fetching NFTs:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNFTs();
-  }, [owner]);
 
   useEffect(() => {
     if (metadata && imgRef.current) {
@@ -164,9 +168,9 @@ export default function MintNft() {
           </h1>
           <h3>
             Unveil the grandeur and legacy of ancient Rome with Caesar, an
-            exclusive NFT that captures the essence of one of history's most
-            iconic figures. This digital masterpiece portrays Julius Caesar in
-            all his imperial glory, with intricate details that bring to life
+            exclusive NFT that captures the essence of one of history&apos;s
+            most iconic figures. This digital masterpiece portrays Julius Caesar
+            in all his imperial glory, with intricate details that bring to life
             the power, wisdom, and ambition that defined his era.
           </h3>
           <div className={styles.ConnectButton}>
