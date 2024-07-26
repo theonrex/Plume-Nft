@@ -34,6 +34,11 @@
     flex-direction: row;
 }
 
+.ConnectButton button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
 .ConnectButton button {
     margin-top: 1em;
     width: 30%;
@@ -286,7 +291,7 @@
     .mint_absolute {
 
         margin-top: 0;
-        padding:0 1em;
+        padding: 0 1em;
     }
 
     .ConnectButton {

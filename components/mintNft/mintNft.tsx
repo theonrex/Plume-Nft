@@ -16,6 +16,7 @@ import { ethers } from "ethers";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ColorThief from "colorthief";
+import { PlumeTestnet } from "@thirdweb-dev/chains";
 
 const convertIpfsToHttp = (ipfsUri: string | undefined) => {
   if (ipfsUri && ipfsUri.startsWith("ipfs://")) {
@@ -174,9 +175,15 @@ export default function MintNft() {
             the power, wisdom, and ambition that defined his era.
           </h3>
           <div className={styles.ConnectButton}>
-            <button className={styles.Mint_NFT} onClick={mintNft}>
-              {isPending ? "Loading" : "Mint NFT"}
-            </button>
+            {!PlumeTestnet ? (
+              <button className={styles.Mint_NFT} disabled>
+                {isPending ? "Loading" : "Mint NFT"}
+              </button>
+            ) : (
+              <button className={styles.Mint_NFT} onClick={mintNft}>
+                {isPending ? "Loading" : "Mint NFT"}
+              </button>
+            )}
           </div>
         </div>
       </div>
